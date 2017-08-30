@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/one_purse_url' => 'purses#one_purse_action'
+  get '/all_purses_url' => 'purses#all_purses_action'
 end

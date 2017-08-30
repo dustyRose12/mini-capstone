@@ -16,11 +16,8 @@ ActiveRecord::Schema.define(version: 20170830010531) do
   enable_extension "plpgsql"
 
   create_table "purses", force: :cascade do |t|
-    t.string "brand"
     t.string "name"
     t.integer "price"
-    t.string "color"
-    t.string "style"
     t.string "image"
     t.string "description"
     t.datetime "created_at", null: false
