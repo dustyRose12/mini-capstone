@@ -1,0 +1,2 @@
+class PursesController < ApplicationController
+end

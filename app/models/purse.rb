@@ -1,0 +1,2 @@
+class Purse < ApplicationRecord
+end
