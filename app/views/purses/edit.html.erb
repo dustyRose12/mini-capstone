@@ -1,0 +1,17 @@
+<h1>Edit a Purse</h1>
+
+<%=form_tag "/purses/#{@purse.id}", method: :patch do %>
+  <div>
+  Name: <input type="text" name="name" value="<%= @purse.name %>">
+  </div>
+   <div>
+    Price: <input type="text" name="price" value="<%= @purse.price %>">
+  </div> 
+  <div>
+    Image: <input type="text" name="image" value="<%= @purse.image %>">
+  </div>
+   <div>
+    Description: <input type="text" name="description" value="<%= @purse.description %>">
+  </div>
+  <input class="btn btn-success" type="submit" value="Update Purse">
+  <% end %>
