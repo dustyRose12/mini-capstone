@@ -15,6 +15,9 @@ class PursesController < ApplicationController
                                     description: params[:description]
                                     )
     purse.save
+    flash[:success] = "Purse Successfully Created"
+    redirect_to "/purses/#{purse.id}"
+
   end
 
    def show
@@ -35,11 +38,16 @@ class PursesController < ApplicationController
                                     description: params[:description]
                                     )
     purse.save
+    flash[:success] = "Purse Successfully Updated"
+    redirect_to "/purses/#{purse.id}"
   end
 
   def destroy
     purse = Purse.find(params[:id])
     purse.destroy
+
+    flash[:warning] = "Purse Successfully Destroyed"
+    redirect_to "/purses"
   end
   
   
