@@ -1,11 +1,7 @@
 class Purse < ApplicationRecord
 
-  def sale_message
-    if price < 2
-      return "Discount Item!"
-    else
-      return "Everyday Value!"
-    end
+  def discounted?
+    price < 50
   end
 
   def tax

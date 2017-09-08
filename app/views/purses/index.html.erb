@@ -2,12 +2,12 @@
   <% @purses.each do |purse| %>
    <div class="col-md-4 col-sm-6 product-index-single">
       <div class="well">
-        <h2>Name: <a href ="/purses/<%= purse.id %>"><%= purse.name %></a></h2>
+        <h2><a href ="/purses/<%= purse.id %>"><%= purse.name %></a></h2>
         <h4>Price: <%= purse.price %></h4>
         <img class= "purse_image" src=<%= purse.image %>> 
-        <h4>Description: <%= purse.description %></h4>
+        <h4><%= purse.description %></h4>
       </div>
-      </div>
+    </div>
   <% end %>
 
 </div>
