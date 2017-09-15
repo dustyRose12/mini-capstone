@@ -1,6 +1,14 @@
 class PursesController < ApplicationController
 
   def index
+    
+    #to store cookies, see how many visitors, etc. sessions is a cookie.
+    if session[:count] == nil
+      session[:count] = 0
+    end
+    session[:count] +=1
+    @counter = session[:count]
+
     @purses = Purse.all
 
     sort_attribute = params[:sort]
@@ -14,13 +22,13 @@ class PursesController < ApplicationController
     end
    
     if sort_attribute && order_attribute
-      @purses = @purses.order({sort_attribute =>  order_attribute}) #this makes it more dynamic, lets you type whatever value i.e, desc or asc into the order_attribute search bar, or any sort_attribute 
+      @purses = @purses.order({sort_attribute =>  order_attribute}) #this makes it more dynamic, lets you type whatever value i.e, desc or asc into the order_attribute search bar, or any sort_attribute . have to break it apart into the hash rocket syntax, otherwise it won't work, as a symbol
     elsif sort_attribute
       @purses = @purses.order(sort_attribute)
     end
 
     if search_term
-      @purses = @purses.where("name iLIKE ?", "%#{search_term}%")
+      @purses = @purses.where("name iLIKE ? OR description iLIKE ?", "%#{search_term}%" , "%#{search_term}%" )
     end
 
   end

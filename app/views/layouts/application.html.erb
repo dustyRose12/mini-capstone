@@ -44,9 +44,8 @@
 
           <!--</form>-->
 
-          <ul class="nav navbar-nav">
-            <li><a href="/purses/random">Random Purse</a></li>
-            <li><a href="/?discount=1000">Discounted Items</a></li>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/?discount=1000"><%=  current_user && current_user.name %></a></li>
             <!--<li><a href="/?random=true">Random Product</a></li> my old way of doing it-->
             
             <!-- you can make a new route called get '/purses/random' => 'products#random' & do it that way, just make sure it's in the right order of routes, i.e, after show or w.e-->
@@ -56,19 +55,22 @@
            <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort <span class="caret"></span></a>
               <ul class="dropdown-menu">
+                <li><a href="/purses/random">Random Purse</a></li>
                 <li><a href="/?discount=1000">Discounted Items</a></li>
                 <li><a href="/?sort=price">Sort by Price: Low - High</a></li>
                 <li><a href="/?sort=price&sort_order=desc">Sort by Price: High - Low</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
+                <li><a href="/?sort=name">Sort by Name</a></li>
+  
                 <li role="separator" class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+                  <li><a href="/signup">Sign Up</a></li>
+                  <li><a href="/login">Log In</a></li>
+                  <li><a href="/logout">Log Out</a></li>
               </ul>
             </li>
           <ul class= "nav navbar-nav navbar-right">
-          <%= form_tag "/purses", method: :get, class: "navbar-form navbar-left" do %>
+          <%= form_tag "/purses", method: :get, class: "navbar-form navbar-right" do %>
               <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
+                <input type="text" class="form-control" placeholder="Search" name="search_term"> <!-- adding the name search_term allows the input to go into the string param into the search bar now no matter what you type-->
                 <button type="submit" class="btn btn-default">Submit</button> 
               </div>
           <% end %>
