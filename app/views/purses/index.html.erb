@@ -3,7 +3,15 @@
    <div class="col-md-4 col-sm-6 product-index-single">
       <div class="well">
         <h2><a href ="/purses/<%= purse.id %>"><%= purse.name %></a></h2>
-        <h4>Price: <%= number_to_currency(purse.price) %></h4>
+      
+        <h4 class="<%= "red-price" if purse.discounted? %>">Price: <%= number_to_currency(purse.price )%></h3>
+  
+            <% if purse.discounted? %>
+              <h5>Discounted Item!</h5>
+            <% else %>
+              <h4>Everyday Great Value!</h4>
+            <% end %>
+
         <img class= "purse_image" src=<%= purse.default_image %>>
         <h4><%= purse.description %></h4>
       </div>

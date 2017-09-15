@@ -19,14 +19,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Purses</a>
+          <a class="navbar-brand" href="/">All Handbags</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav">
             <li class="active"><a href="/purses/new">New Purse <span class="sr-only">(current)</span></a></li>
-            <li class="dropdown">
+           <!-- <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
@@ -37,51 +37,49 @@
                 <li role="separator" class="divider"></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li>-->
           </ul>
 
 
-        <!-- <form action="/purses" method="get" class="navbar-form navbar-left" role="search">-->
-          <%= form_tag "/purses", method: :get, class: "navbar-form navbar-left" do %>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search">
-                <button type="submit" class="btn btn-default">Submit</button> 
-              </div>
-          <% end %>
 
           <!--</form>-->
 
-
-
-
-
-
-          <ul class="nav navbar-nav navbar-right">
-            <li><a href="/?discount=50">Discounted Items</a></li>
+          <ul class="nav navbar-nav">
             <li><a href="/purses/random">Random Purse</a></li>
+            <li><a href="/?discount=1000">Discounted Items</a></li>
             <!--<li><a href="/?random=true">Random Product</a></li> my old way of doing it-->
             
             <!-- you can make a new route called get '/purses/random' => 'products#random' & do it that way, just make sure it's in the right order of routes, i.e, after show or w.e-->
-            
-            <li class="dropdown">
+          
+
+        <!-- <form action="/purses" method="get" class="navbar-form navbar-left" role="search">-->
+           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sort <span class="caret"></span></a>
               <ul class="dropdown-menu">
-                <li><a href="/purses/new">New Purse</a></li>
+                <li><a href="/?discount=1000">Discounted Items</a></li>
                 <li><a href="/?sort=price">Sort by Price: Low - High</a></li>
                 <li><a href="/?sort=price&sort_order=desc">Sort by Price: High - Low</a></li>
-
                 <li><a href="#">Another action</a></li>
                 <li><a href="#">Something else here</a></li>
                 <li role="separator" class="divider"></li>
                 <li><a href="#">Separated link</a></li>
               </ul>
             </li>
+          <ul class= "nav navbar-nav navbar-right">
+          <%= form_tag "/purses", method: :get, class: "navbar-form navbar-left" do %>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <button type="submit" class="btn btn-default">Submit</button> 
+              </div>
+          <% end %>
           </ul>
+
+
+
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
 
-     <p><a href="/purses/new">New Purse</a></p>
 
      <div class="container">
 
