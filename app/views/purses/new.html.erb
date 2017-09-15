@@ -14,4 +14,14 @@
     Description: <input type="text" name="description">
   </div>
   <input type="submit" value="Create Purse">
+  <div>
+    Supplier:
+    <select name="supplier_id">
+    <% @suppliers.each do |supplier| %>
+        <option value= "<%= supplier.id %>"> <%= supplier.name %></option>
+     <% end %>
+      </select> 
+  </div>
+    
+
   <% end %>

@@ -1,7 +1,10 @@
 class Purse < ApplicationRecord
 
+  belongs_to :supplier
+  has_many :images
+
   def discounted?
-    price < 50
+    price < 1000
   end
 
   def tax
@@ -12,16 +15,27 @@ class Purse < ApplicationRecord
     return price + tax
   end
 
-  # def self.random
-  #   products = Purse.all
-  #   all_ids = []
-  #   products.each do |product|
-  #     all_ids << product.all_id
-  #   end
+#add this to make the default image not empty
+  def default_image
+    if images.count > 0
+      images.first.url
+    else
+      "http://owgcc.com/wp-content/uploads/2015/07/Mini-Designer-Handbags.jpg"
+    end
+  end
 
-  #   @product = Product.find(all_ids.sample)
-  #   render "show.html.erb"
-  # end
+
+  def self.random
+    purses = Purse.all
+    all_ids = []
+    purses.each do |purse|
+      all_ids << purse.id
+    end
+    all_ids.sample
+
+    # @purse = Purse.find(all_ids.sample)
+    # render "show.html.erb"
+  end
 
 
 

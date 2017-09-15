@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  # get '/one_purse_url' => 'purses#one_purse_action'
-  # get '/all_purses_url' => 'purses#all_purses_action'
-
   get '/' => 'purses#index'
   get '/purses' => 'purses#index'
 
   get '/purses/new' => 'purses#new'
   post '/purses' => 'purses#create'
+
+  get '/purses/random' => 'purses#random' #must be before purses/:id otherwise it'll trigger random as an ":id" param. IF we put the purse.all.sample line into the show method, so we don't need the random route anymore. now the "random" word gets passed as a param into the show page. 
 
   get '/purses/:id' => 'purses#show'
 

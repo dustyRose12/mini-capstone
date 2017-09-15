@@ -6,9 +6,8 @@ class PursesController < ApplicationController
     sort_attribute = params[:sort]
     order_attribute = params[:sort_order]
     discount_amount = params[:discount]
-    random = params[:random]
 
-    search_name = params[:search]
+    search_term = params[:search_term]
 
     if discount_amount
       @purses = @purses.where("price < ?", discount_amount)
@@ -20,29 +19,27 @@ class PursesController < ApplicationController
       @purses = @purses.order(sort_attribute)
     end
 
-    if random
-      @purses = @purses.order("RANDOM()").first(1)
-      #active record queries also has a pluck method, that plucks one out product.find_by(product.all.pluck(:id).sample). you can write the method in the purse.rb file instead 
+    if search_term
+      @purses = @purses.where("name iLIKE ?", "%#{search_term}%")
     end
-
-
-    if search_name 
-      @purses = @purses.where("#{:name} iLIKE ?", "%#{search_name}%")
-    end
-
 
   end
-
+    # if random
+    #   @purses = @purses.order("RANDOM()").first(1)
+      #active record queries also has a pluck method, that plucks one out product.find_by(product.all.pluck(:id).sample). you can write the method in the purse.rb file instead 
+    # end
 
   def new
+    @suppliers = Supplier.all
   end
+
 
   def create 
     purse = Purse.new(
                                     name: params[:name],
                                     price: params[:price],
-                                    image: params[:image],
-                                    description: params[:description]
+                                    description: params[:description],
+                                    supplier_id: params[:supplier_id],
                                     )
     purse.save
     flash[:success] = "Purse Successfully Created"
@@ -51,7 +48,9 @@ class PursesController < ApplicationController
   end
 
    def show
-    @purse = Purse.find(params[:id])
+      
+      @purse = Purse.find(params[:id])
+    
   end
 
   def edit
@@ -64,8 +63,8 @@ class PursesController < ApplicationController
     purse.assign_attributes(
                                     name: params[:name],
                                     price: params[:price],
-                                    image: params[:image],
-                                    description: params[:description]
+                                    description: params[:description],
+                                    supplier_id: params[:supplier_id]
                                     )
     purse.save
     flash[:success] = "Purse Successfully Updated"
@@ -79,6 +78,17 @@ class PursesController < ApplicationController
     flash[:warning] = "Purse Successfully Destroyed"
     redirect_to "/purses"
   end
+
+  def random #this is not needed if we just put the @purse = Purse.all.sample line up into the show method as an if / else. that way show method takes care of a param being "random"
+    purse_id = Purse.all.sample.id
+    redirect_to "/purses/#{purse_id}"
+    #render "show.html.erb"
+    #we are rendering the show page because random doesn't need its own view, the whole point was for random to point to a show page.
+ end
+
+  # if search_term
+  #     @purses = @purses.where("name iLIKE ?", "%#{search_term}%")
+  # end
   
   
 end

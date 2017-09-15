@@ -39,15 +39,27 @@
               </ul>
             </li>
           </ul>
-          <form class="navbar-form navbar-left">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+
+
+        <!-- <form action="/purses" method="get" class="navbar-form navbar-left" role="search">-->
+          <%= form_tag "/purses", method: :get, class: "navbar-form navbar-left" do %>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search">
+                <button type="submit" class="btn btn-default">Submit</button> 
+              </div>
+          <% end %>
+
+          <!--</form>-->
+
+
+
+
+
+
           <ul class="nav navbar-nav navbar-right">
             <li><a href="/?discount=50">Discounted Items</a></li>
-            <li><a href="/?random=true">Random Product</a></li>
+            <li><a href="/purses/random">Random Purse</a></li>
+            <!--<li><a href="/?random=true">Random Product</a></li> my old way of doing it-->
             
             <!-- you can make a new route called get '/purses/random' => 'products#random' & do it that way, just make sure it's in the right order of routes, i.e, after show or w.e-->
             
