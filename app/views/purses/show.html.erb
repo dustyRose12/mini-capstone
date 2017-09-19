@@ -13,7 +13,7 @@
   <h4>Total: <%= number_to_currency(@purse.total )%></h4>
 
   <% @purse.images.each do |image| %>
-  <img class="purse_image" src="<%= image.url %>" alt=”<%= @purse.name %>” class=”img-responsive”>
+  <img class="purse_image" src="<%= image.url %>" alt=”<%= @purse.name %>” class=”img-responsive">
   <% end %>
 
   <h5>Description: </h5>
@@ -23,4 +23,15 @@
   <%= link_to "Delete Purse", "/purses/#{ @purse.id }", method: :delete, class: "btn btn-danger" %>
 
   <h6>Supplier: <%=  @purse.supplier.name %></h6>
-</div>
+
+
+
+  <%=form_tag "/orders", method: :post do %>
+  <div>
+  Quantity: <input type="text" name="quantity">
+  <input type="hidden" name="purse_id" value="<%= @purse.id %>">
+  </div>
+
+  <input type="submit" value="Buy Now">
+  <% end %>
+
