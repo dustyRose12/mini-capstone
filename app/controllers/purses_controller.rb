@@ -14,8 +14,13 @@ class PursesController < ApplicationController
     sort_attribute = params[:sort]
     order_attribute = params[:sort_order]
     discount_amount = params[:discount]
+    category_sort = params[:category_id]
 
     search_term = params[:search_term]
+
+    if category_sort 
+      @purses = Category.find_by(id: category_sort).purses 
+    end
 
     if discount_amount
       @purses = @purses.where("price < ?", discount_amount)

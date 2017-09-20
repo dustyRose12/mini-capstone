@@ -12,6 +12,11 @@
   <h5>Tax: <%= number_to_currency(@purse.tax )%></h5>
   <h4>Total: <%= number_to_currency(@purse.total )%></h4>
 
+  <% @purse.categories.each do |category| %>
+        <h5>Category: <%= category.name %></h5>
+  <% end %>
+
+
   <% @purse.images.each do |image| %>
   <img class="purse_image" src="<%= image.url %>" alt=”<%= @purse.name %>” class=”img-responsive">
   <% end %>

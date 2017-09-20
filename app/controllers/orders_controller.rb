@@ -9,8 +9,8 @@ class OrdersController < ApplicationController
                                   )
 
     order.calculate_totals
-
     order.save
+    
     flash[:success] = 'Successfully created an order!'
     redirect_to "/orders/#{order.id}"
   

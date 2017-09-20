@@ -3,6 +3,8 @@ class Purse < ApplicationRecord
   belongs_to :supplier
   has_many :images
   has_many :orders
+  has_many :category_purses
+  has_many :categories, through: :category_purses
 
   def discounted?
     price < 1000
