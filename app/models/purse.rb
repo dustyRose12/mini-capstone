@@ -6,6 +6,9 @@ class Purse < ApplicationRecord
   has_many :category_purses
   has_many :categories, through: :category_purses
 
+  has_many :carted_purses
+  # has_many :orders, through: :carted_purses (not needed right now)
+
   def discounted?
     price < 1000
   end

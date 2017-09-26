@@ -1,6 +1,9 @@
 class Order < ApplicationRecord
   belongs_to :purse, optional: true
   belongs_to :user, optional: true
+  
+  has_many :carted_purses
+  has_many :purses, through: :carted_purses
 
   # def initialize(options_hash)
   #   super(options_hash) #this is an unnecessary step to make it drier, but not the usual way

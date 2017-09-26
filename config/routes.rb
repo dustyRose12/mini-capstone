@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   post '/orders' => 'orders#create'
   get '/orders/:id' => 'orders#show' #must be below post in this case 
 
+  post '/cart' => 'carted_purses#create'
+  get '/cart' => 'carted_purses#index'
+
 
 
 

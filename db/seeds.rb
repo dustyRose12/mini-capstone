@@ -37,16 +37,27 @@
 #                       {purse_id: 7, url: "https://n.nordstrommedia.com/ImageGallery/store/product/Zoom/13/_101488653.jpg?crop=pad&pad_color=FFF&format=jpeg&trim=color&trimcolor=FFF&w=780&h=838&dpr=2&quality=60"}
 #                       ])
 
-Category.create!(name: "Shoulder Bags")
-Category.create!(name: "Totes")
-Category.create!(name: "Satchels")
-Category.create!(name: "Clutches")
+# Category.create!(name: "Shoulder Bags")
+# Category.create!(name: "Totes")
+# Category.create!(name: "Satchels")
+# Category.create!(name: "Clutches")
 
-CategoryPurse.create!(purse_id: 1, category_id: 1)
-CategoryPurse.create!(purse_id: 2, category_id: 1)
-CategoryPurse.create!(purse_id: 3, category_id: 2)
-CategoryPurse.create!(purse_id: 4, category_id: 2)
-CategoryPurse.create!(purse_id: 5, category_id: 1)
-CategoryPurse.create!(purse_id: 6, category_id: 3)
-CategoryPurse.create!(purse_id: 7, category_id: 4)
+# CategoryPurse.create!(purse_id: 1, category_id: 1)
+# CategoryPurse.create!(purse_id: 2, category_id: 1)
+# CategoryPurse.create!(purse_id: 3, category_id: 2)
+# CategoryPurse.create!(purse_id: 4, category_id: 2)
+# CategoryPurse.create!(purse_id: 5, category_id: 1)
+# CategoryPurse.create!(purse_id: 6, category_id: 3)
+# CategoryPurse.create!(purse_id: 7, category_id: 4)
+
+
+# this assigns a random num of random categories to each product (so you get a mix where some have 2 cats, some have 3):
+# products = Product.all
+# categories = Category.all
+
+# products.each do |product|
+#   categories.sample(rand(1..3)).each do |category|
+#     CategoryProduct.create!(product_id: product.id, category_id: category.id)
+#   end
+# end
 

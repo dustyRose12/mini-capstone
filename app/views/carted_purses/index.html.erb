@@ -1,0 +1,18 @@
+<h2>Check Out </h2>
+
+<% @carted_purses.each do |carted_purse| %>
+    <h3>Product: <%=  carted_purse.purse.name %></h3>
+    <br>
+    <h3>Quantity:<%= carted_purse.quantity %> </h3>
+    <h3>Purse Price: <%= number_to_currency(carted_purse.purse.price) %></h3>
+    <h3>Subtotal: <%= number_to_currency(carted_purse.subtotal) %></h3>
+    <h3>Tax: <%= number_to_currency(carted_purse.purse.tax) %></h3>
+    <br>
+    <h3>Total Price: <%= number_to_currency(carted_purse.total) %></h3>
+    <br>
+<% end %>
+
+
+  <%=form_tag "/orders", method: :post do %>
+  <input type="submit" value="Buy Now!">
+  <% end %>
