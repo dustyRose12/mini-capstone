@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def create
 
   CartedPurse.all.each do |carted_purse|
-    if carted_purse.status = 'carted'
+    if carted_purse.status == 'carted'
           order = Order.new(
                                         user_id: current_user.id,
                                         quantity: params[carted_purse.quantity],
