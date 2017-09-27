@@ -24,14 +24,16 @@
   <h5>Description: </h5>
   <h4 class="description"><%= @purse.description %></h4>
 
-  <%= link_to "Edit Purse", "/purses/#{ @purse.id}/edit", class: "btn btn-warning" %>
-  <%= link_to "Delete Purse", "/purses/#{ @purse.id }", method: :delete, class: "btn btn-danger" %>
+   <% if current_user && current_user.admin %>
+      <%= link_to "Edit Purse", "/purses/#{ @purse.id}/edit", class: "btn btn-warning" %>
+      <%= link_to "Delete Purse", "/purses/#{ @purse.id }", method: :delete, class: "btn btn-danger" %>     
+  <% end %>
 
   <h6>Supplier: <%=  @purse.supplier.name %></h6>
 
 
 
-  <%=form_tag "/cart", method: :post do %>
+  <%=form_tag "/carted_purses", method: :post do %>
   <div>
   Quantity: <input type="text" name="quantity">
   <input type="hidden" name="purse_id" value="<%= @purse.id %>">

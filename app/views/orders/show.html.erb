@@ -1,23 +1,17 @@
 <h2>Order #75030<%= @order.id %> Successfully Created</h2>
 
-
 <h3>Bought by:<%= @order.user.name %> </h3>
-<h3>Product: <%=  @order.purse.name %></h3>
-<br>
-<h3>Quantity:<%= @order.quantity %> </h3>
-<h3>Purse Price: <%= number_to_currency(@order.purse.price) %></h3>
-<br>
-<h3>Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
-<h3>Tax: <%= number_to_currency(@order.tax) %></h3>
-<h3>Total Price: <%= number_to_currency(@order.total) %></h3>
-<br>
 
-<h3>User ID:<%= @order.user_id %> </h3>
-<h3>Product ID: <%= @order.purse_id %></h3>
+<% @order.carted_purses.each do |carted_purse| %>
+        <h3><%=  carted_purse.purse.name %>  X  <%= carted_purse.quantity %></h3>
+        <br>
+        <h3>Purse Price: <%= number_to_currency(carted_purse.purse.price) %></h3>
+        <br>
+        <h3>Subtotal: <%= number_to_currency(@order.subtotal) %></h3>
+        <h3>Tax: <%= number_to_currency(@order.tax) %></h3>
+        <h3>Total Price: <%= number_to_currency(@order.total) %></h3>
+        <br>
+<% end %>
 
-<h3>User Email: <%= @order.user.email %> </h3>
-
-
- <img class="purse_image" src="<%= current_user.orders.last.purse.images.first.url %>" class=”img-responsive">
 
 

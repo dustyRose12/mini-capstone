@@ -2,12 +2,12 @@ class Purse < ApplicationRecord
 
   belongs_to :supplier
   has_many :images
-  has_many :orders
   has_many :category_purses
   has_many :categories, through: :category_purses
 
+  # has_many :orders #gets replaced
   has_many :carted_purses
-  # has_many :orders, through: :carted_purses (not needed right now)
+  has_many :orders, through: :carted_purses #not needed right now, but leave it anyway just in case
 
   def discounted?
     price < 1000

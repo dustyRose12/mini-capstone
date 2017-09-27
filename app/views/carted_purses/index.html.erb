@@ -1,18 +1,14 @@
-<h2>Check Out </h2>
+<h1>Check Out</h1>
 
-<% @carted_purses.each do |carted_purse| %>
-    <h3>Product: <%=  carted_purse.purse.name %></h3>
-    <br>
-    <h3>Quantity:<%= carted_purse.quantity %> </h3>
-    <h3>Purse Price: <%= number_to_currency(carted_purse.purse.price) %></h3>
-    <h3>Subtotal: <%= number_to_currency(carted_purse.subtotal) %></h3>
-    <h3>Tax: <%= number_to_currency(carted_purse.purse.tax) %></h3>
-    <br>
-    <h3>Total Price: <%= number_to_currency(carted_purse.total) %></h3>
-    <br>
-<% end %>
+    <% @carted_purses.each do |carted_purse| %>
+          <h2>Name: <%= carted_purse.purse.name %></a></h2>
+          <h3>Price: $<%= carted_purse.purse.price %></h3>
+          <h3>Quantity: $<%= carted_purse.quantity %></h3>
 
+          <%= link_to "remove", "/carted_purses/#{carted_purse.id}", method: :delete  %>
+    <% end %>
 
-  <%=form_tag "/orders", method: :post do %>
-  <input type="submit" value="Buy Now!">
-  <% end %>
+    <br>
+    <br>
+    <%= link_to "Buy Now", "/orders", method: :post, class: "btn btn-primary" %><!--this is best way to make the button link cleaner to look at, as opposed to the regular form tag way with a button -->
+

@@ -25,8 +25,9 @@ Rails.application.routes.draw do
   post '/orders' => 'orders#create'
   get '/orders/:id' => 'orders#show' #must be below post in this case 
 
-  post '/cart' => 'carted_purses#create'
-  get '/cart' => 'carted_purses#index'
+  get '/cart' => 'carted_purses#index' #the index goes above the create action in this case
+  post '/carted_purses' => 'carted_purses#create' #leave this url as carted_purses, but the index route can have just cart instead
+  delete '/carted_purses/:id' => 'carted_purses#destroy'
 
 
 

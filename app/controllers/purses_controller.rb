@@ -1,13 +1,15 @@
 class PursesController < ApplicationController
 
+  before_action :authenticate_admin!, except: [:index, :show, :random]
+
   def index
     
     #to store cookies, see how many visitors, etc. sessions is a cookie.
-    if session[:count] == nil
-      session[:count] = 0
-    end
-    session[:count] +=1
-    @counter = session[:count]
+    # if session[:count] == nil
+    #   session[:count] = 0
+    # end
+    # session[:count] +=1
+    # @counter = session[:count]
 
     @purses = Purse.all
 
@@ -43,11 +45,14 @@ class PursesController < ApplicationController
     # end
 
   def new
+    # redirect_to "/" unless current_user && current_user.admin
     @suppliers = Supplier.all
   end
 
 
   def create 
+    # redirect_to "/" unless current_user && current_user.admin #not needed anymore since we added the authenticate_admin method
+
     purse = Purse.new(
                                     name: params[:name],
                                     price: params[:price],
@@ -71,6 +76,8 @@ class PursesController < ApplicationController
   end
 
   def update
+    # redirect_to "/" unless current_user && current_user.admin
+
     purse = Purse.find(params[:id])
 
     purse.assign_attributes(
@@ -85,6 +92,8 @@ class PursesController < ApplicationController
   end
 
   def destroy
+    # redirect_to "/" unless current_user && current_user.admin
+
     purse = Purse.find(params[:id])
     purse.destroy
 
