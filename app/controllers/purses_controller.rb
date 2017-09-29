@@ -1,6 +1,6 @@
 class PursesController < ApplicationController
 
-  before_action :authenticate_admin!, except: [:index, :show, :random]
+  before_action :authenticate_admin!, only: [:new, :create, :edit, :update, :destroy] #you can say except or only
 
   def index
     
@@ -47,49 +47,60 @@ class PursesController < ApplicationController
   def new
     # redirect_to "/" unless current_user && current_user.admin
     @suppliers = Supplier.all
+    @purse = Purse.new #this is best practice to put a blank object here
   end
 
 
   def create 
     # redirect_to "/" unless current_user && current_user.admin #not needed anymore since we added the authenticate_admin method
 
-    purse = Purse.new(
+    @purse = Purse.new(
                                     name: params[:name],
                                     price: params[:price],
                                     description: params[:description],
                                     supplier_id: params[:supplier_id],
                                     )
-    purse.save
-    flash[:success] = "Purse Successfully Created"
-    redirect_to "/purses/#{purse.id}"
+    if @purse.save
+      flash[:success] = "Purse Successfully Created"
+      redirect_to "/purses/#{@purse.id}"
+    else
+      @suppliers = Supplier.all
+      @errors = @purse.errors.full_messages
+      render "new.html.erb"
+    end
 
   end
 
    def show
-      
       @purse = Purse.find(params[:id])
-    
   end
 
   def edit
+    @suppliers = Supplier.all
     @purse = Purse.find(params[:id])
   end
 
   def update
     # redirect_to "/" unless current_user && current_user.admin
 
-    purse = Purse.find(params[:id])
+    @purse = Purse.find(params[:id])
 
-    purse.assign_attributes(
+    @purse.assign_attributes(
                                     name: params[:name],
                                     price: params[:price],
                                     description: params[:description],
                                     supplier_id: params[:supplier_id]
                                     )
-    purse.save
-    flash[:success] = "Purse Successfully Updated"
-    redirect_to "/purses/#{purse.id}"
-  end
+    if @purse.save
+      flash[:success] = "Purse Successfully Updated"
+      redirect_to "/purses/#{@purse.id}"
+    else
+      @suppliers = Supplier.all
+      @errors = @purse.errors.full_messages
+      render "edit.html.erb"
+    end
+
+   end
 
   def destroy
     # redirect_to "/" unless current_user && current_user.admin

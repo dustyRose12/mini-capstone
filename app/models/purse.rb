@@ -4,10 +4,21 @@ class Purse < ApplicationRecord
   has_many :images
   has_many :category_purses
   has_many :categories, through: :category_purses
-
   # has_many :orders #gets replaced
   has_many :carted_purses
   has_many :orders, through: :carted_purses #not needed right now, but leave it anyway just in case
+
+  validates :name, presence: true
+  validates :name, uniqueness: true #validates that the product has a unique name
+  validates :price, presence: true
+  validates :price, numericality: true #so that it's some sort of number
+  validates :description, length: { in: 200..500 }
+  # validates :description, length: { minimum: 200 } this is same as above, gives you full error in rails console so this version is better
+  # validates :description, length: { maximum: 500 }
+
+
+
+
 
   def discounted?
     price < 1000

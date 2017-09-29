@@ -18,7 +18,7 @@
 
 
   <% @purse.images.each do |image| %>
-  <img class="purse_image" src="<%= image.url %>" alt=”<%= @purse.name %>” class=”img-responsive">
+  <img class="purse_image" src="<%= image.url %>" alt="<%= @purse.name %>" class="img-responsive">
   <% end %>
 
   <h5>Description: </h5>
@@ -27,6 +27,8 @@
    <% if current_user && current_user.admin %>
       <%= link_to "Edit Purse", "/purses/#{ @purse.id}/edit", class: "btn btn-warning" %>
       <%= link_to "Delete Purse", "/purses/#{ @purse.id }", method: :delete, class: "btn btn-danger" %>     
+  <% else %>
+    <p>Please <a href="/login">Login</a> to Purchase Items</p>
   <% end %>
 
   <h6>Supplier: <%=  @purse.supplier.name %></h6>

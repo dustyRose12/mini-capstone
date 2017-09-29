@@ -1,5 +1,7 @@
 class CartedPursesController < ApplicationController
 
+  before_action :authenticate_user!
+
   def index
     # @carted_purses = CartedPurse.where(user_id: current_user.id, status: "carted") #this is the most ruby way of writing it with colons
     # CartedPurse.where("user_id = ? AND status = ?", current_user.id, "carted") #can do it this way
