@@ -1,17 +1,17 @@
-User.create!([
-                   {name: "Rocio C", email: "rocio@gmail.com", password: "rocio", password_confirmation: "rocio", admin: true},
-                    {name: "Cyrus Y", email: "cyrus@gmail.com", password: "cyrus", password_confirmation: "cyrus", admin: false}
-  ])
-Supplier.create!([
-                          {name: "Luxury Wholesale Online", email: "luxurywholesale@hotmail.com", phone: "801-555-9878"},
-                          {name: "Whole Designer Handbags", email: "wholedesigner@gmail.com", phone: "310-555-9999"},
-                          {name: "Salehoo", email: "salehoo@gmail.com", phone: "212-989-5556"}
-                          ])
+# User.create!([
+#                    {name: "Rocio C", email: "rocio@gmail.com", password: "rocio", password_confirmation: "rocio", admin: true},
+#                     {name: "Cyrus Y", email: "cyrus@gmail.com", password: "cyrus", password_confirmation: "cyrus", admin: false}
+#   ])
+# Supplier.create!([
+#                           {name: "Luxury Wholesale Online", email: "luxurywholesale@hotmail.com", phone: "801-555-9878"},
+#                           {name: "Whole Designer Handbags", email: "wholedesigner@gmail.com", phone: "310-555-9999"},
+#                           {name: "Salehoo", email: "salehoo@gmail.com", phone: "212-989-5556"}
+#                           ])
 
 Purse.create!([
-                       {name: "Saint Laurent LouLou Matelassé Velour Shoulder Bag", price: 1850, description: "The iconic YSL insignia centers the flap of a matelassé-stitched crossbody bag handmade in Italy from lush velour and topped with a pull-through chain strap that can be worn doubled or extended as you prefer.", supplier_id: 1},
+                      #  {name: "Saint Laurent LouLou Matelassé Velour Shoulder Bag", price: 1850, description: "The iconic YSL insignia centers the flap of a matelassé-stitched crossbody bag handmade in Italy from lush velour and topped with a pull-through chain strap that can be worn doubled or extended as you prefer.", supplier_id: 1},
 
-                      {name: "Chloé Drew Leather Shoulder Bag", price: 1850, description: "Chloé's newest take on the saddle bag is the epitome of relaxed modernity: A rounded silhouette mixes with a squared-off flap, while gleaming goldtone hardware highlights the bag's soft, grained leather.", supplier_id: 2},
+                      # {name: "Chloé Drew Leather Shoulder Bag", price: 1850, description: "Chloé's newest take on the saddle bag is the epitome of relaxed modernity: A rounded silhouette mixes with a squared-off flap, while gleaming goldtone hardware highlights the bag's soft, grained leather.", supplier_id: 2},
 
                       {name: "Burberry Medium Reversible Haymarket Check & Leather Tote", price: 1150, description: "A stylish two-in-one: turn this chic, spacious tote inside out when you want to switch from slate-blue pebbled leather to the classic Haymarket check.", supplier_id: 3},
 

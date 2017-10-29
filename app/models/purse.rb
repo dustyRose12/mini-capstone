@@ -12,7 +12,7 @@ class Purse < ApplicationRecord
   validates :name, uniqueness: true #validates that the product has a unique name
   validates :price, presence: true
   validates :price, numericality: true #so that it's some sort of number
-  validates :description, length: { in: 200..500 }
+  # validates :description, length: { in: 200..500 }
   # validates :description, length: { minimum: 200 } this is same as above, gives you full error in rails console so this version is better
   # validates :description, length: { maximum: 500 }
 
